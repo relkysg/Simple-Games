@@ -277,15 +277,19 @@ void playAgain() {
     printf("Do you want to play again? (Y/N): ");
     scanf(" %c", &choice);
 
+// Display final results
+
+    printf("\nFinal Results:\n");
+    printf("Player 1 Wins: %d\n", player1Wins);
+    printf("Player 1 Looses: %d\n", player1Losses);
+    printf("Player 2 Wins: %d\n", player2Wins);
+    printf("Computer Wins: %d\n", computerWins);
+    printf("Computer Loses: %d\n", computerLosses);
+    printf("Draws: %d\n\n", draws);
+
     if (choice == 'Y' || choice == 'y') {
         startGame();
     } else {
         printf("Returning to main menu...\n");
-        // Display final results
-        printf("\nFinal Results:\n");
-        printf("Player 1 Wins: %d\n", player1Wins);
-        printf("Player 2 Wins: %d\n", player2Wins);
-        printf("Computer Wins: %d\n", computerWins);
-        printf("Draws: %d\n\n", draws);
     }
 }
