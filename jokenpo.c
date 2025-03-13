@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+// Function declarations
 void showMenu();
 void startGame();
 void showRules();
@@ -15,12 +16,14 @@ void showLossCounterOptions();
 void resetCounters();
 void playAgain();
 
+// Global counters
 int player1Wins = 0, player2Wins = 0, computerWins = 0;
 int player1Losses = 0, player2Losses = 0, computerLosses = 0;
+int draws = 0; // Draw counter
 
 int main() {
     int choice;
-    srand(time(NULL));
+    srand(time(NULL)); // Initialize random number generator
 
     while (1) {
         showMenu();
@@ -43,28 +46,30 @@ int main() {
                 exitGame();
                 return 0;
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                printf("Invalid option. Try again.\n");
         }
     }
     return 0;
 }
 
+// Function to display the main menu
 void showMenu() {
-    printf("Menu Principal:\n");
-    printf("1. Iniciando o jogo\n");
-    printf("2. Regras do jogo\n");
-    printf("3. Contador de Vitórias\n");
-    printf("4. Contador de Derrotas\n");
-    printf("5. Saindo do jogo\n");
-    printf("Escolha uma opção: ");
+    printf("Main Menu:\n");
+    printf("1. Start Game\n");
+    printf("2. Game Rules\n");
+    printf("3. Win Counter\n");
+    printf("4. Loss Counter\n");
+    printf("5. Exit Game\n");
+    printf("Choose an option: ");
 }
 
+// Function to start the game
 void startGame() {
     int mode;
-    printf("Escolha o modo de jogo:\n");
-    printf("1. Jogador VS Computador\n");
-    printf("2. Jogador VS Jogador\n");
-    printf("Escolha uma opção: ");
+    printf("Choose the game mode:\n");
+    printf("1. Player VS Computer\n");
+    printf("2. Player VS Player\n");
+    printf("Choose an option: ");
     scanf("%d", &mode);
 
     switch (mode) {
@@ -75,20 +80,22 @@ void startGame() {
             playerVsPlayer();
             break;
         default:
-            printf("Opção inválida. Tente novamente.\n");
+            printf("Invalid option. Try again.\n");
     }
 }
 
+// Function to display the game rules
 void showRules() {
-    printf("Regras do jogo:\n");
-    printf("Pedra ganha de Tesoura\n");
-    printf("Tesoura ganha de Papel\n");
-    printf("Papel ganha de Pedra\n");
-    printf("Pressione qualquer tecla para voltar ao menu principal...\n");
+    printf("Game Rules:\n");
+    printf("Rock beats Scissors\n");
+    printf("Scissors beat Paper\n");
+    printf("Paper beats Rock\n");
+    printf("Press any key to return to the main menu...\n");
     getchar();
     getchar();
 }
 
+// Function to display the win counter
 void showWinCounter() {
     int choice;
     showWinCounterOptions();
@@ -96,17 +103,17 @@ void showWinCounter() {
 
     switch (choice) {
         case 1:
-            printf("Vitórias do Jogador 1: %d\n", player1Wins);
-            printf("Vitórias do Jogador 2: %d\n", player2Wins);
+            printf("Player 1 Wins: %d\n", player1Wins);
+            printf("Player 2 Wins: %d\n", player2Wins);
             break;
         case 2:
-            printf("Vitórias do Jogador 1: %d\n", player1Wins);
-            printf("Vitórias do Computador: %d\n", computerWins);
+            printf("Player 1 Wins: %d\n", player1Wins);
+            printf("Computer Wins: %d\n", computerWins);
             break;
         case 3:
-            printf("Vitórias do Jogador 1: %d\n", player1Wins);
-            printf("Vitórias do Jogador 2: %d\n", player2Wins);
-            printf("Vitórias do Computador: %d\n", computerWins);
+            printf("Player 1 Wins: %d\n", player1Wins);
+            printf("Player 2 Wins: %d\n", player2Wins);
+            printf("Computer Wins: %d\n", computerWins);
             break;
         case 4:
             resetCounters();
@@ -114,13 +121,14 @@ void showWinCounter() {
         case 5:
             return;
         default:
-            printf("Opção inválida. Tente novamente.\n");
+            printf("Invalid option. Try again.\n");
     }
-    printf("Pressione qualquer tecla para voltar ao menu principal...\n");
+    printf("Press any key to return to the main menu...\n");
     getchar();
     getchar();
 }
 
+// Function to display the loss counter
 void showLossCounter() {
     int choice;
     showLossCounterOptions();
@@ -128,17 +136,17 @@ void showLossCounter() {
 
     switch (choice) {
         case 1:
-            printf("Derrotas do Jogador 1: %d\n", player1Losses);
-            printf("Derrotas do Jogador 2: %d\n", player2Losses);
+            printf("Player 1 Losses: %d\n", player1Losses);
+            printf("Player 2 Losses: %d\n", player2Losses);
             break;
         case 2:
-            printf("Derrotas do Jogador 1: %d\n", player1Losses);
-            printf("Derrotas do Computador: %d\n", computerLosses);
+            printf("Player 1 Losses: %d\n", player1Losses);
+            printf("Computer Losses: %d\n", computerLosses);
             break;
         case 3:
-            printf("Derrotas do Jogador 1: %d\n", player1Losses);
-            printf("Derrotas do Jogador 2: %d\n", player2Losses);
-            printf("Derrotas do Computador: %d\n", computerLosses);
+            printf("Player 1 Losses: %d\n", player1Losses);
+            printf("Player 2 Losses: %d\n", player2Losses);
+            printf("Computer Losses: %d\n", computerLosses);
             break;
         case 4:
             resetCounters();
@@ -146,44 +154,47 @@ void showLossCounter() {
         case 5:
             return;
         default:
-            printf("Opção inválida. Tente novamente.\n");
+            printf("Invalid option. Try again.\n");
     }
-    printf("Pressione qualquer tecla para voltar ao menu principal...\n");
+    printf("Press any key to return to the main menu...\n");
     getchar();
     getchar();
 }
 
+// Function to exit the game
 void exitGame() {
-    printf("Encerrando o jogo...\n");
-    printf("Obrigado por jogar!\n");
-    printf("Até a próxima!\n");
+    printf("Exiting the game...\n");
+    printf("Thank you for playing!\n");
+    printf("See you next time!\n");
 }
 
+// Function for Player VS Computer mode
 void playerVsComputer() {
     int rounds, playerChoice, computerChoice;
-    printf("Quantas rodadas você quer jogar? ");
+    printf("How many rounds do you want to play? ");
     scanf("%d", &rounds);
 
     for (int i = 0; i < rounds; i++) {
-        printf("Escolha uma opção:\n");
-        printf("1. Pedra\n");
-        printf("2. Papel\n");
-        printf("3. Tesoura\n");
-        printf("Escolha: ");
+        printf("Choose an option:\n");
+        printf("1. Rock\n");
+        printf("2. Paper\n");
+        printf("3. Scissors\n");
+        printf("Choose: ");
         scanf("%d", &playerChoice);
 
         computerChoice = rand() % 3 + 1;
 
         if (playerChoice == computerChoice) {
-            printf("Empate!\n");
+            printf("Draw!\n");
+            draws++;
         } else if ((playerChoice == 1 && computerChoice == 3) ||
                    (playerChoice == 2 && computerChoice == 1) ||
                    (playerChoice == 3 && computerChoice == 2)) {
-            printf("Você ganhou!\n");
+            printf("You won!\n");
             player1Wins++;
             computerLosses++;
         } else {
-            printf("Você perdeu!\n");
+            printf("You lost!\n");
             computerWins++;
             player1Losses++;
         }
@@ -191,36 +202,38 @@ void playerVsComputer() {
     playAgain();
 }
 
+// Function for Player VS Player mode
 void playerVsPlayer() {
     int rounds, player1Choice, player2Choice;
-    printf("Quantas rodadas você quer jogar? ");
+    printf("How many rounds do you want to play? ");
     scanf("%d", &rounds);
 
     for (int i = 0; i < rounds; i++) {
-        printf("Jogador 1, escolha uma opção:\n");
-        printf("1. Pedra\n");
-        printf("2. Papel\n");
-        printf("3. Tesoura\n");
-        printf("Escolha: ");
+        printf("Player 1, choose an option:\n");
+        printf("1. Rock\n");
+        printf("2. Paper\n");
+        printf("3. Scissors\n");
+        printf("Choose: ");
         scanf("%d", &player1Choice);
 
-        printf("Jogador 2, escolha uma opção:\n");
-        printf("1. Pedra\n");
-        printf("2. Papel\n");
-        printf("3. Tesoura\n");
-        printf("Escolha: ");
+        printf("Player 2, choose an option:\n");
+        printf("1. Rock\n");
+        printf("2. Paper\n");
+        printf("3. Scissors\n");
+        printf("Choose: ");
         scanf("%d", &player2Choice);
 
         if (player1Choice == player2Choice) {
-            printf("Empate!\n");
+            printf("Draw!\n");
+            draws++;
         } else if ((player1Choice == 1 && player2Choice == 3) ||
                    (player1Choice == 2 && player2Choice == 1) ||
                    (player1Choice == 3 && player2Choice == 2)) {
-            printf("Jogador 1 ganhou!\n");
+            printf("Player 1 won!\n");
             player1Wins++;
             player2Losses++;
         } else {
-            printf("Jogador 2 ganhou!\n");
+            printf("Player 2 won!\n");
             player2Wins++;
             player1Losses++;
         }
@@ -228,40 +241,51 @@ void playerVsPlayer() {
     playAgain();
 }
 
+// Function to display win counter options
 void showWinCounterOptions() {
-    printf("Contador de Vitórias:\n");
-    printf("1. Contador de vitórias do jogador VS jogador\n");
-    printf("2. Contador de vitórias do jogador VS Computador\n");
-    printf("3. Contador de vitórias totais dos jogadores e computador\n");
-    printf("4. Reiniciar os contadores\n");
-    printf("5. Retornar ao menu principal\n");
-    printf("Escolha uma opção: ");
+    printf("Win Counter:\n");
+    printf("1. Player VS Player win counter\n");
+    printf("2. Player VS Computer win counter\n");
+    printf("3. Total wins of players and computer\n");
+    printf("4. Reset counters\n");
+    printf("5. Return to main menu\n");
+    printf("Choose an option: ");
 }
 
+// Function to display loss counter options
 void showLossCounterOptions() {
-    printf("Contador de Derrotas:\n");
-    printf("1. Contador de derrotas do jogador VS jogador\n");
-    printf("2. Contador de derrotas do jogador VS Computador\n");
-    printf("3. Contador de derrotas totais dos jogadores e computador\n");
-    printf("4. Reiniciar os contadores\n");
-    printf("5. Retornar ao menu principal\n");
-    printf("Escolha uma opção: ");
+    printf("Loss Counter:\n");
+    printf("1. Player VS Player loss counter\n");
+    printf("2. Player VS Computer loss counter\n");
+    printf("3. Total losses of players and computer\n");
+    printf("4. Reset counters\n");
+    printf("5. Return to main menu\n");
+    printf("Choose an option: ");
 }
 
+// Function to reset counters
 void resetCounters() {
     player1Wins = player2Wins = computerWins = 0;
     player1Losses = player2Losses = computerLosses = 0;
-    printf("Contadores reiniciados.\n");
+    draws = 0; // Reset draw counter
+    printf("Counters reset.\n");
 }
 
+// Function to ask if the player wants to play again
 void playAgain() {
     char choice;
-    printf("Deseja jogar novamente? (S/N): ");
+    printf("Do you want to play again? (Y/N): ");
     scanf(" %c", &choice);
 
-    if (choice == 'S' || choice == 's') {
+    if (choice == 'Y' || choice == 'y') {
         startGame();
     } else {
-        printf("Voltando ao menu principal...\n");
+        printf("Returning to main menu...\n");
+        // Display final results
+        printf("\nFinal Results:\n");
+        printf("Player 1 Wins: %d\n", player1Wins);
+        printf("Player 2 Wins: %d\n", player2Wins);
+        printf("Computer Wins: %d\n", computerWins);
+        printf("Draws: %d\n\n", draws);
     }
 }
